@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+//消失的数字
+//数组nums包含从0到n的所有整数,但是缺一个
+int missingNumber(int* nums, int numsSize)
+{
+	int x = 0;
+	for (int i = 0; i <= numsSize; ++i)
+	{
+		x ^= i;
+	}
+
+	//再跟数组中值异或
+	for (int i = 0; i < numsSize; ++i)
+	{
+		x ^= nums[i];
+	}
+
+	return x;
+}
+
+
+int main(void)
+{
+	int arr[] = { 0, 1, 2, 3, 5 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+
+	int x = missingNumber(arr, sz);
+
+	printf("%d\n", x);
+
+	return 0;
+}
